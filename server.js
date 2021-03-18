@@ -5,16 +5,21 @@ const csv = require('csv-parser')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+
 var woorden = []
-fs.createReadStream('woorden.txt')
+fs.createReadStream(__dirname + '/woorden.txt')
   .pipe(csv({ separator: '|', quote: ''}))
   .on('data', row => woorden.push(row))    
   .on('end', x => {
     console.log('CSV file successfully processed')
   })
-  
+
 const app = express()
-app.use(express.static('../frontend'))
+app.use(express.static('./frontend'))
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -34,4 +39,4 @@ app.post("/", (req, res) =>{
 	res.charset = 'utf-8';
 	res.json(uitk)
 })
-app.listen(8000)
+app.listen(port)

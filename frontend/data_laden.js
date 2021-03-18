@@ -12,7 +12,8 @@ const maakPostOptions = tekst_id =>{
 }
 
 const laadData = tekst_id =>{
-    fetch("http://localhost:8000/", maakPostOptions(tekst_id))
+    // console.log(window.location.protocol + "//" + window.location.hostname + "")
+    fetch(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port, maakPostOptions(tekst_id))
     .then(response => response.json())
     .then(woorden => {
         d3.select("#tekst").html("")
@@ -32,7 +33,7 @@ const laadData = tekst_id =>{
 }
 
 const laadNummers = () =>{
-    fetch("http://localhost:8000/nummers")
+    fetch(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/nummers")
     .then(response => response.json())
     .then(response => {
         nummers = response
@@ -45,7 +46,7 @@ const laadNummers = () =>{
 }
 
 const laadUpos = () =>{
-    fetch("http://localhost:8000/upos")
+    fetch(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/upos")
         .then(response => response.json())
         .then(x => linkerbalkVullen(x))        
 }
