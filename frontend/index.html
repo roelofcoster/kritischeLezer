@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kritische lezer</title>
+    <link rel="stylesheet" href="bootstrap_min.css">
+    <link rel="stylesheet" href="stijl.css">
+    <script>"use strict"</script>
+    <script src="d3.v6.js"></script>
+    <script src="scrollArtikelen.js"></script>
+    <script src="kleurIn.js"></script>
+    <script src="laadDataViaForm.js"></script>
+    <script>document.addEventListener("keydown", scrollArtikelen)</script>
+</head>
+<body>
+    <div id="zijbalk">
+        <form id="formulier_tekstnr" onsubmit="laadDataViaForm()">
+            <label for="tekst_id">Tekst nr:</label>
+            <input type="text" id="tekst_id">
+            <input type="submit" hidden />
+        </form>
+        <form id="form_keuzes"></form>
+    </div>
+    <div id="hoofdvak">
+        <div id="tekst">
+        </div>
+    </div>
+</body>
+<script src="data_laden.js"></script>
+<script>
+    var nummers
+    laadNummers()
+</script>
+<script src="linkerbalkVullen.js"></script>
+<script>
+    var inputs
+    laadUpos()
+</script>
+</html>
