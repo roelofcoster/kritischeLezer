@@ -12,7 +12,6 @@ const maakPostOptions = tekst_id =>{
 }
 
 const laadData = tekst_id =>{
-    // console.log(window.location.protocol + "//" + window.location.hostname + "")
     fetch(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port, maakPostOptions(tekst_id))
     .then(response => response.json())
     .then(woorden => {
